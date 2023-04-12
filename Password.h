@@ -1,6 +1,9 @@
 #ifndef PRACTICE_H
 #define PRACTICE_H
 
+#include <algorithm>
+#include <climits>
+#include <stdexcept>
 #include <string>
 
 using std::string;
@@ -15,5 +18,8 @@ public:
   'z' and any ASCII characters are allowed.
   */
   int count_leading_characters (string);
+
+protected:
+  static void check_is_ascii (const string &str);
 };
 #endif

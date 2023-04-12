@@ -3,3 +3,4 @@
 make clean
 make
 ./PasswordTest
+make clean

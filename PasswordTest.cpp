@@ -44,7 +44,7 @@ TEST (PasswordTest, multi_char_password)
 TEST (PasswordTest, capital_letter_paritions_password)
 {
   Password my_password;
-  ASSERT_EQ (1, my_password.count_leading_characters ("aaAabb"));
+  ASSERT_EQ (2, my_password.count_leading_characters ("aaAabb"));
 }
 
 TEST (PasswordTest, whitespace_password)
@@ -56,5 +56,6 @@ TEST (PasswordTest, whitespace_password)
 TEST (PasswordTest, unicode_password)
 {
   Password my_password;
-  EXPECT_ANY_THROW (my_password.count_leading_characters ("ßßßc"));
+  EXPECT_THROW (my_password.count_leading_characters ("ßßßc"),
+                std::invalid_argument);
 }
