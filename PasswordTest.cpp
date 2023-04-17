@@ -77,3 +77,15 @@ TEST (PasswordTest, empty_password_mixed_case_test)
   Password my_password;
   ASSERT_FALSE (my_password.has_mixed_case (""));
 }
+
+TEST (PasswordTest, unicode_password_single_case)
+{
+  Password my_password;
+  ASSERT_FALSE (my_password.has_mixed_case ("ßßßc"));
+}
+
+TEST (PasswordTest, unicode_password_literal_case)
+{
+  Password my_password;
+  ASSERT_TRUE (my_password.has_mixed_case ("\u0062\u0042"));
+}
