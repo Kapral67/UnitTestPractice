@@ -59,3 +59,21 @@ TEST (PasswordTest, unicode_password)
   EXPECT_THROW (my_password.count_leading_characters ("ßßßc"),
                 std::invalid_argument);
 }
+
+TEST (PasswordTest, mixed_case_password)
+{
+  Password my_password;
+  ASSERT_TRUE (my_password.has_mixed_case ("aA"));
+}
+
+TEST (PasswordTest, single_case_password)
+{
+  Password my_password;
+  ASSERT_FALSE (my_password.has_mixed_case ("a"));
+}
+
+TEST (PasswordTest, empty_password_mixed_case_test)
+{
+  Password my_password;
+  ASSERT_FALSE (my_password.has_mixed_case (""));
+}

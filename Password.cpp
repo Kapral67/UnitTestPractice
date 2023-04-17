@@ -31,3 +31,18 @@ Password::count_leading_characters (string phrase)
 
   return repetition;
 }
+
+bool
+Password::has_mixed_case (string phrase)
+{
+  if (phrase.empty ())
+    return false;
+
+  Password::check_is_ascii (phrase);
+
+  auto is_lower = [] (const unsigned char &c) { return c >= 'a' && c <= 'z'; };
+  auto is_upper = [] (const unsigned char &c) { return c >= 'A' && c <= 'Z'; };
+
+  return std::any_of (phrase.begin (), phrase.end (), is_lower)
+         && std::any_of (phrase.begin (), phrase.end (), is_upper);
+}
