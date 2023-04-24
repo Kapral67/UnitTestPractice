@@ -32,13 +32,27 @@ Password::count_leading_characters (string phrase)
   return repetition;
 }
 
-bool
-Password::has_mixed_case (string phrase)
-{
-  Password::check_is_ascii (phrase);
-  auto is_lower = [] (const unsigned char &c) { return c >= 'a' && c <= 'z'; };
-  auto is_upper = [] (const unsigned char &c) { return c >= 'A' && c <= 'Z'; };
+// bool
+// Password::has_mixed_case (string phrase)
+// {
+//   // Password::check_is_ascii (phrase);
+//   auto is_lower = [] (const unsigned char &c) { return c >= 'a' && c <= 'z';
+//   }; auto is_upper = [] (const unsigned char &c) { return c >= 'A' && c <=
+//   'Z'; };
 
-  return std::any_of (phrase.begin (), phrase.end (), is_lower)
-         && std::any_of (phrase.begin (), phrase.end (), is_upper);
+//   return std::any_of (phrase.begin (), phrase.end (), is_lower)
+//          && std::any_of (phrase.begin (), phrase.end (), is_upper);
+// }
+
+bool
+Password::has_mixed_case (string password)
+{
+  int length = password.length ();
+  string upper = password, lower = password;
+  for (int i = 0; i < password.length (); i++)
+    {
+      upper[i] = toupper (password[i]);
+      lower[i] = tolower (password[i]);
+    }
+  return password != upper && password != lower;
 }
